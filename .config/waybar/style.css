@@ -1,6 +1,6 @@
 
 * {
-    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif, monospace;
     font-size: 14px;  /* Slightly smaller font size */
     font-weight: 900;
     margin: 0;
@@ -104,6 +104,38 @@ window#waybar.hidden {
     background-color: #111827;
     border-radius: 14px;
     padding: 6px;  /* Adjusted padding */
+}
+
+#cava{
+  border-radius: 0px 14px 14px 0px;
+  background-color: #111827;
+  padding: 0px 6px 0px 6px;
+  margin-left: -0.4em;
+}
+
+#cava.silent {
+  opacity: 0;
+}
+
+@import url("/tmp/cover.css");
+
+#image{
+  padding: 0px;
+  background: none;
+  border-radius: 0px;
+}
+
+#image.empty{
+  opacity: 0;
+  margin: 0px;
+  padding: 0px;
+}
+
+#mpris{
+  margin: -1px 0em 0px 0px;
+  border-radius: 14px 0px 0px 14px;
+  background-color: #111827;
+  padding: 0px 6px 0px 6px;
 }
 
 #power-profiles-daemon{

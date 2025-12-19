@@ -4,8 +4,8 @@
     // -------------------------------------------------------------------------
 
     "layer": "top",
-
     "position": "top",
+    "reload_style_on_change": true,
 
     //"height": 20,
 
@@ -19,35 +19,38 @@
         //"custom/rofi",
         "hyprland/workspaces",
         //"hyprland/submap",
-        "temperature",
-        // "idle_inhibitor",
-        // "mpd",
-        "custom/spotify",
-        "power-profiles-daemon"
+        "mpris",
+        "custom/cover-art",
+        "cava",
     ],
     "modules-center": [
-        // "hyprland/window"
+        //"hyprland/window",
         "clock#date",
-        "custom/weather"
-        //"custom/gammastep"
+        "custom/weather",
+        "custom/gammastep",
     ],
     "modules-right": [
-        "backlight",
-        "custom/storage",
-        "memory",
-        "cpu",
-        "battery",
+        //"idle_inhibitor",
+        //"mpd",
+        //"custom/spotify",
         //"pulseaudio",
-        "wireplumber",
         // "custom/screenshot_t",
         "tray",
-        "custom/power"
+        "power-profiles-daemon",
+        "custom/storage",
+        "temperature",
+        "memory",
+        "cpu",
+        "network",
+        "wireplumber",
+        "battery",
+        "custom/power",
     ],
 
 
     // -------------------------------------------------------------------------
     // Modules
-    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- 
 
     "power-profiles-daemon": {
         "format": "{icon}",
@@ -57,6 +60,45 @@
             "balanced": "",
             "power-saver": ""
         }
+    },
+
+    "cava": {
+        "framerate": 24,
+        "autosens": 1,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 20000,
+        "hide_on_silence": true,
+        "sleep_timer": 0,
+        //"format_silent": "quiet",
+        "method": "pipewire",
+        "source": "auto",
+        "stereo": true,
+        "reverse": true,
+        "bar_delimiter": 0,
+        "autoscale": true,
+        "monstercat": true,
+        "waves": false,
+        "noise_reduction": 0.77,
+        "input_delay": 2,
+        "format-icons": ["⠀","⣀", "⣤", "⣤", "⣶", "⣿" ],
+        "actions": {
+                   "on-click-right": "mode"
+                   }
+    },
+
+    "custom/cover-art": {
+        "exec": "~/.config/waybar/modules/albumcover.sh",
+        "format": " {text}",
+        "tooltip": false,
+        "signal": 1,
+        "return-type": "json",
+      },
+
+    "image#album-art":{
+      "path": "/tmp/cover.gif",
+      "signal": 1,
+      "size": 50,
     },
 
     "custom/sp1": {
@@ -270,6 +312,26 @@
         "min-length": 13
     },
 
+    "mpris": {
+	"format": "{player_icon}    {dynamic}: {position}  {status_icon} ",
+	"format-paused": "{player_icon}    {dynamic}: <i>{position}</i>  {status_icon} ",
+  "dynamic-separator": " • ",
+  "dynamic-order": ["artist", "title", "album"],
+	"dynamic-importance-order": ["title", "artist", "album"],
+  "dynamic-len" : 75,
+  "interval": 1,
+  "player-icons": {
+		"default": "▶",
+		"mpv": "🎵",
+    "firefox": "",
+	},
+	"status-icons": {
+    "playing": "▶",
+    "stopped": "",
+		"paused": "",
+	},
+},
+
     "mpd": {
         "max-length": 25,
         "format": "<span foreground='#bb9af7'></span> {title}",
@@ -331,6 +393,7 @@
 
     "hyprland/window": {
         "max-length": 100,
+        "format": "{title}",
         "separate-outputs": true
     },
 

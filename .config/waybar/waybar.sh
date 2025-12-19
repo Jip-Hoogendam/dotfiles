@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+mkfile /tmp/cover.css
+
 # Terminate already running bar instances
 killall -q waybar
 
