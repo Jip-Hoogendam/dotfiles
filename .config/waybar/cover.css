@@ -1,0 +1,13 @@
+@keyframes coverSpin{
+  to {background-position: 0% 100%;}
+}
+
+#custom-cover-art{
+  min-width: 48px;
+  min-height: 48px;
+  background: url("file:///tmp/cover.png?ts=1764346553");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0px 0px;
+  animation: coverSpin 3.5s steps(119) infinite; 
+}

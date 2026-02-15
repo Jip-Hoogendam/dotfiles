@@ -1,0 +1,26 @@
+@keyframes coverSpin{
+  to {background-position: 0% 100%;}
+}
+
+@keyframes coverStop{
+  to {background-position: 0px 0px;}
+}
+
+#custom-cover-art:hover{
+  animation: coverStop 1.5s;
+  background-position: 0px 0px;
+
+}
+
+#custom-cover-art{
+  top: -5px;
+  min-width: 48px;
+  min-height: 48px;
+  background: url("file:///tmp/cover.png?ts=1769956354");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0px 0px;
+  animation: coverSpin 3.5s steps(119) infinite;
+
+  transition: background-position 1.5s ease-out;
+}
