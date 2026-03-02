@@ -1,29 +1,30 @@
 * {
-    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif, monospace;
-    font-size: 14px;  /* Slightly smaller font size */
-    font-weight: 900;
-    margin: 0;
-    padding: 0;
-    transition-property: background-color;
-    transition-duration: 0.5s;
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif, monospace;
+  font-size: 9.5pt;
+  /* Slightly smaller font size */
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
 /* Reset all styles */
 * {
-    border: none;
-    border-radius: 0px 0px 3px 3px;
-    min-height: 0;
-    margin: 0.0em 0.0em 0.2em 0.0em;
+  border: none;
+  border-radius: 0px 0px 3px 3px;
+  min-height: 0;
+  margin: 0.0em 0.0em 0.2em 0.0em;
 }
 
 /* The whole bar */
 #waybar {
-    background-color: transparent;
-    color: #ff0055;
-    transition-property: background-color;
-    transition-duration: 0.5s;
-    border-radius: 0px;
-    margin: 0px 0px;
+  background-color: transparent;
+  color: #ff0055;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-radius: 0px;
+  margin: 0px 0px;
 }
 
 window#waybar.hidden {
@@ -31,39 +32,41 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 0px 15px 0px 15px;  /* Adjusted padding to reduce height */
-    margin: 0.0em 0.2em 0.2em 0.2em;
-    color: #ff0055;
-    background-color: rgba(16,17,16,0.7);
-    transition: all 0.3s ease-in-out;
-    font-size: 13px;  /* Slightly smaller font size */
+  padding: 0px 15px 0px 15px;
+  /* Adjusted padding to reduce height */
+  margin: 0.0em 0.2em 0.2em 0.2em;
+  color: #ff0055;
+  background-color: rgba(16, 17, 16, 0.7);
+  transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.active {
-    color: #ffffff;
-    background: #ff0055;
+  color: #ffffff;
+  background: #ff0055;
 }
 
 #workspaces button:hover {
-    background: #909090;
+  background: #909090;
 }
 
 #workspaces button.urgent {
-    background-color: #FF0020;
+  background-color: #FF0020;
 }
 
 #workspaces {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 #window {
-    background-color: rgba(16,17,16,0.7);
-    font-size: 15px;   /* Slightly smaller font size */
-    font-weight: 800;
-    color: @foreground;
-    padding: 3px 6px;  /* Reduced padding */
-    margin: 2px;
-    opacity: 1;
+  background-color: rgba(16, 17, 16, 0.7);
+  font-size: 15px;
+  /* Slightly smaller font size */
+  font-weight: 800;
+  color: @foreground;
+  padding: 3px 6px;
+  /* Reduced padding */
+  margin: 2px;
+  opacity: 1;
 }
 
 #power-profiles-daemon,
@@ -88,12 +91,13 @@ window#waybar.hidden {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.default {
-    background-color: rgba(16,17,16,0.7);
-    padding: 6px;  /* Adjusted padding */
+  background-color: rgba(16, 17, 16, 0.7);
+  padding: 6px;
+  /* Adjusted padding */
 }
 
-#cava{
-  background-color: rgba(16,17,16,0.7);
+#cava {
+  background-color: rgba(16, 17, 16, 0.7);
   padding: 0px 6px 0px 6px;
   margin-left: -0.4em;
 }
@@ -104,173 +108,197 @@ window#waybar.hidden {
 
 @import url("/tmp/cover.css");
 
-#image{
+#image {
   padding: 0px;
   background: none;
   border-radius: 0px;
 }
 
-#image.empty{
+#image.empty {
   opacity: 0;
   margin: 0px;
   padding: 0px;
 }
 
-#mpris{
+#mpris {
   margin: -1px 0em 0px 0px;
-  background-color: rgba(16,17,16,0.7);
+  background-color: rgba(16, 17, 16, 0.7);
   padding: 0px 6px 0px 6px;
 }
 
-#power-profiles-daemon{
-    padding-left: 15px;
-    padding-right: 15px;
-    color: #ffff20;
+#power-profiles-daemon {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #ffff20;
 }
 
 #tray {
-    background-color: rgba(16,17,16,0.7);
-    padding: 8px;  /* Adjusted padding */
+  background-color: rgba(16, 17, 16, 0.7);
+  padding: 8px;
+  /* Adjusted padding */
 }
 
-#tray > .passive {
-    -gtk-icon-effect: dim;
+#tray>.passive {
+  -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
 }
 
 #cpu {
-    color: #ff0055;
-    background-color: rgba(16,17,16,0.7);
-    padding: 6px;
+  color: #ff0055;
+  background-color: rgba(16, 17, 16, 0.7);
+  padding: 6px;
 }
 
 #memory {
-    color: #2088ff;
-    background-color: rgba(16,17,16,0.7);
-    padding: 6px;
+  color: #2088ff;
+  background-color: rgba(16, 17, 16, 0.7);
+  padding: 6px;
 }
 
 #custom-power {
-    font-size: 20px;
-    background-color: rgba(16,17,16,0.7);
-    padding: 6px;
+  font-size: 20px;
+  background-color: rgba(16, 17, 16, 0.7);
+  padding: 6px;
 }
 
 #custom-storage {
-    color: #a0ff20;
-    background-color: rgba(16,17,16,0.7);
-    padding: 6px;
+  color: #a0ff20;
+  background-color: rgba(16, 17, 16, 0.7);
+  padding: 6px;
 }
 
 #custom-weather.severe {
-    color: #eb937d;
+  color: #eb937d;
 }
 
 #custom-weather.sunnyDay {
-    color: #c2ca76;
+  color: #c2ca76;
 }
 
 #custom-weather.clearNight {
-    color: #cad3f5;
+  color: #cad3f5;
 }
 
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight {
-    color: #c2ddda;
+  color: #c2ddda;
 }
 
 #custom-weather.rainyDay,
 #custom-weather.rainyNight {
-    color: #5aaca5;
+  color: #5aaca5;
 }
 
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight {
-    color: #d6e7e5;
+  color: #d6e7e5;
 }
 
 #custom-weather.default {
-    color: #dbd9d8;
+  color: #dbd9d8;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
 }
 
 #pulseaudio {
-    color: #7d9bba;
+  color: #7d9bba;
 }
 
 #battery {
-    color: #26a65b;
+  color: #26a65b;
 }
 
-#battery.charging{
+#battery.charging {
   animation: rainbow-text 5s linear infinite;
 }
 
 @keyframes rainbow-text {
-    0%   { color: #ff0000; }
-    14%  { color: #ff7f00; }
-    28%  { color: #ffff00; }
-    42%  { color: #00ff00; }
-    57%  { color: #0000ff; }
-    71%  { color: #4b0082; }
-    85%  { color: #8f00ff; }
-    100% { color: #ff0000; }
+  0% {
+    color: #ff0000;
+  }
+
+  14% {
+    color: #ff7f00;
+  }
+
+  28% {
+    color: #ffff00;
+  }
+
+  42% {
+    color: #00ff00;
+  }
+
+  57% {
+    color: #0000ff;
+  }
+
+  71% {
+    color: #4b0082;
+  }
+
+  85% {
+    color: #8f00ff;
+  }
+
+  100% {
+    color: #ff0000;
+  }
 }
 
 #battery.full,
 #battery.plugged {
-    color: #a0ff20;
+  color: #a0ff20;
 }
 
 @keyframes blink {
-    to {
-        background-color: rgba(30, 34, 42, 0.5);
-        color: #abb2bf;
-    }
+  to {
+    background-color: rgba(30, 34, 42, 0.5);
+    color: #abb2bf;
+  }
 }
 
 #battery.critical:not(.charging) {
-    color: #ff0022;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: #ff0022;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 label:focus {
-    background-color: #000000;
+  background-color: #000000;
 }
 
-#clock{
+#clock {
   color: #ff0055;
 }
 
 #network {
-    color: #c080ff;
+  color: #c080ff;
 }
 
 #network.disconnected {
-    color: #ff0020;
+  color: #ff0020;
 }
 
 #temperature {
-    background-color: rgba(255,144,32,0.5);
+  background-color: rgba(255, 144, 32, 0.5);
 }
 
 #temperature.critical {
-    background-color: rgba(255,00,85,0.5);
+  background-color: rgba(255, 00, 85, 0.5);
 }
