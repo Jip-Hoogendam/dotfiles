@@ -29,8 +29,7 @@ local theme = lush(function(injected_functions)
 		-- lCursor({ bg = hsl(0, 54, 76), fg = hsl(0, 0, 0) }), -- Character under the cursor when |language-mapping| is used (see 'guicursor')
 		-- CursorIM({ bg = hsl(0, 54, 76), fg = hsl(0, 0, 0) }), -- Like Cursor, but used when in IME mode |CursorIM|
 		-- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-		-- CursorLine     { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-		-- Directory      { }, -- Directory names (and other special names in listings)
+		Directory({ fg = hsl(222, 97, 85) }), -- Directory names (and other special names in listings)
 		-- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
 		-- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
 		-- DiffDelete     { }, -- Diff mode: Deleted line |diff.txt|
@@ -38,7 +37,7 @@ local theme = lush(function(injected_functions)
 		-- EndOfBuffer    { }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
 		-- TermCursor     { }, -- Cursor in a focused terminal
 		-- TermCursorNC   { }, -- Cursor in an unfocused terminal
-		-- ErrorMsg       { }, -- Error messages on the command line
+		ErrorMsg({ fg = hsl(342, 100, 78) }), -- Error messages on the command line
 		-- VertSplit      { }, -- Column separating vertically split windows
 		-- Folded         { }, -- Line used for closed folds
 		-- FoldColumn     { }, -- 'foldcolumn'
@@ -49,13 +48,13 @@ local theme = lush(function(injected_functions)
 		-- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
 		-- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
 		-- MatchParen     { }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-		-- ModeMsg        { }, -- 'showmode' message (e.g., "-- INSERT -- ")
+		ModeMsg({ fg = hsl(115, 54, 76) }), -- 'showmode' message (e.g., "-- INSERT -- ")
 		-- MsgArea        { }, -- Area for messages and cmdline
 		-- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-		-- MoreMsg        { }, -- |more-prompt|
-		-- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		-- NormalFloat    { }, -- Normal text in floating windows.
-		-- FloatBorder    { }, -- Border of floating windows.
+		MoreMsg({ fg = Normal.fg, bg = Normal.bg.darken(30) }), -- |more-prompt|
+		NonText({ fg = hsl(222, 40, 60), gui = "italic" }), -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+		NormalFloat({ fg = Normal.fg, bg = Normal.bg.darken(30) }), -- Normal text in floating windows.
+		FloatBorder({ NormalFloat }), -- Border of floating windows.
 		-- FloatTitle     { }, -- Title of floating windows.
 		-- NormalNC       { }, -- normal text in non-current windows
 		-- Pmenu          { }, -- Popup menu: Normal item.
@@ -66,15 +65,15 @@ local theme = lush(function(injected_functions)
 		-- PmenuExtraSel  { }, -- Popup menu: Selected item "extra text"
 		-- PmenuSbar      { }, -- Popup menu: Scrollbar.
 		-- PmenuThumb     { }, -- Popup menu: Thumb of the scrollbar.
-		-- Question       { }, -- |hit-enter| prompt and yes/no questions
-		-- QuickFixLine   { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+		Question({ NormalFloat }), -- |hit-enter| prompt and yes/no questions
+		QuickFixLine({ NormalFloat }), -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		Search({ Visual }), -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 		-- SpecialKey     { }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-		-- SpellBad       { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-		-- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-		-- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-		-- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-		-- StatusLine     { }, -- Status line of current window
+		SpellBad({ fg = Normal.fg, gui = "underCurl", sp = hsl(342, 100, 78) }), -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		SpellCap({ fg = Normal.fg, gui = "underCurl", sp = hsl(20, 100, 78) }), -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+		SpellLocal({ fg = Normal.fg, gui = "underCurl", sp = hsl(115, 54, 76) }), -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+		SpellRare({ fg = Normal.fg, gui = "underCurl", sp = hsl(180, 57, 73) }), -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
+		StatusLine({ bg = Normal.bg.darken(40) }), -- Status line of current window
 		-- StatusLineNC   { }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		-- TabLine        { }, -- Tab pages line, not active tab page label
 		-- TabLineFill    { }, -- Tab pages line, where there are no labels
@@ -97,7 +96,7 @@ local theme = lush(function(injected_functions)
 		-- Identifier     { }, -- (*) Any variable name
 		Function({ fg = hsl(115, 54, 79) }), --   Function name (also: methods for classes)
 
-		-- Statement      { }, -- (*) Any statement
+		Statement({ fg = Normal.fg.darken(10), gui = "bold" }), -- (*) Any statement
 		-- Conditional    { }, --   if, then, else, endif, switch, etc.
 		-- Repeat         { }, --   for, do, while, etc.
 		-- Label          { }, --   case, default, etc.
@@ -105,22 +104,22 @@ local theme = lush(function(injected_functions)
 		-- Keyword        { }, --   any other keyword
 		-- Exception      { }, --   try, catch, throw
 
-		-- PreProc        { }, -- (*) Generic Preprocessor
+		PreProc({ Function, gui = "italic" }), -- (*) Generic Preprocessor
 		-- Include        { }, --   Preprocessor #include
 		-- Define         { }, --   Preprocessor #define
 		-- Macro          { }, --   Same as Define
 		-- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
 		Type({ fg = hsl(222, 97, 85), gui = "bold" }), -- (*) int, long, char, etc.
-		-- StorageClass   { }, --   static, register, volatile, etc.
+		StorageClass({ fg = Type.fg.darken(10) }), --   static, register, volatile, etc.
 		-- Structure      { }, --   struct, union, enum, etc.
 		-- Typedef        { }, --   A typedef
 
 		-- Special        { }, -- (*) Any special symbol
-		-- SpecialChar    { }, --   Special character in a constant
+		SpecialChar({ fg = String.fg.lighten(50), gui = "bold,italic" }), --   Special character in a constant
 		-- Tag            { }, --   You can use CTRL-] on this
 		-- Delimiter      { }, --   Character that needs attention
-		-- SpecialComment { }, --   Special things inside a comment (e.g. '\n')
+		SpecialComment({ fg = String.fg.lighten(50), gui = "bold,italic" }), --   Special things inside a comment (e.g. '\n')
 		-- Debug          { }, --   Debugging statements
 
 		Underlined({ fg = hsl(255, 100, 78), gui = "underline" }), -- Text that stands out, HTML links
@@ -139,7 +138,7 @@ local theme = lush(function(injected_functions)
 		-- LspReferenceWrite           { } , -- Used for highlighting "write" references
 		-- LspCodeLens                 { } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
 		-- LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
-		-- LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+		LspSignatureActiveParameter({ fg = hsl(342, 100, 78) }), -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
 		-- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 		--
@@ -153,11 +152,11 @@ local theme = lush(function(injected_functions)
 		-- DiagnosticVirtualTextInfo  { } , -- Used for "Info" diagnostic virtual text.
 		-- DiagnosticVirtualTextHint  { } , -- Used for "Hint" diagnostic virtual text.
 		-- DiagnosticVirtualTextOk    { } , -- Used for "Ok" diagnostic virtual text.
-		DiagnosticUnderlineError({ DiagnosticError, gui = "underline", guisp = hsl(342, 100, 78) }), -- Used to underline "Error" diagnostics.
-		DiagnosticUnderlineWarn({ DiagnosticWarn, gui = "underline", guisp = hsl(20, 100, 78) }), -- Used to underline "Warn" diagnostics.
-		DiagnosticUnderlineInfo({ DiagnosticInfo, gui = "underline", guisp = hsl(180, 57, 73) }), -- Used to underline "Info" diagnostics.
-		DiagnosticUnderlineHint({ DiagnosticHint, gui = "underline", guisp = hsl(217, 100, 78) }), -- Used to underline "Hint" diagnostics.
-		DiagnosticUnderlineOk({ DiagnosticOk, gui = "underline", guisp = hsl(115, 54, 76) }), -- Used to underline "Ok" diagnostics.
+		DiagnosticUnderlineError({ DiagnosticError, gui = "underline", sp = hsl(342, 100, 50) }), -- Used to underline "Error" diagnostics.
+		DiagnosticUnderlineWarn({ DiagnosticWarn, gui = "underline", sp = hsl(20, 100, 50) }), -- Used to underline "Warn" diagnostics.
+		DiagnosticUnderlineInfo({ DiagnosticInfo, gui = "underline", sp = hsl(180, 57, 50) }), -- Used to underline "Info" diagnostics.
+		DiagnosticUnderlineHint({ DiagnosticHint, gui = "underline", sp = hsl(217, 100, 50) }), -- Used to underline "Hint" diagnostics.
+		DiagnosticUnderlineOk({ DiagnosticOk, gui = "underline", sp = hsl(115, 54, 50) }), -- Used to underline "Ok" diagnostics.
 		-- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
 		-- DiagnosticFloatingWarn     { } , -- Used to color "Warn" diagnostic messages in diagnostics float.
 		-- DiagnosticFloatingInfo     { } , -- Used to color "Info" diagnostic messages in diagnostics float.
@@ -210,7 +209,7 @@ local theme = lush(function(injected_functions)
 		-- sym"@function"          { }, -- Function
 		-- sym"@function.builtin"  { }, -- Special
 		-- sym"@function.macro"    { }, -- Macro
-		-- sym"@parameter"         { }, -- Identifier
+		sym("@parameter")({ fg = hsl(342, 100, 78) }), -- Identifier
 		-- sym"@method"            { }, -- Function
 		-- sym"@field"             { }, -- Identifier
 		-- sym"@property"          { }, -- Identifier
