@@ -42,5 +42,33 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-theme = Cyberpunk Scarlet Protocol
+
+background = #202231
+foreground = #FFC6FF
+cursor-color = #A6E0A3
+cursor-text = #202231
+
+selection-background = #424850
+selection-foreground = #FFD6FF
+
+palette = 0=#202231
+palette = 1=#FF8FB1
+palette = 2=#A6E3A1
+palette = 3=#FFCE5C
+palette = 4=#89B4FA
+palette = 5=#F5BDE6
+palette = 6=#94E2D5
+palette = 7=#f5E0DC
+
+palette = 8=#282B3E
+palette = 9=#FFB3C6
+palette = 10=#C8F7C5
+palette = 11=#FFE099
+palette = 12=#B6CCFE
+palette = 13=#FFC6FF
+palette = 14=#B5EAD7
+palette = 15=#FFF0F6
+
+
+mouse-hide-while-typing = true
 background-opacity = 0.75
