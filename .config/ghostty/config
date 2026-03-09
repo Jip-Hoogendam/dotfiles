@@ -43,6 +43,7 @@
 # resize-overlay-duration = 4s 200ms
 
 custom-shader = shaders/cursor.glsl
+# custom-shader = shaders/select_pulse.glsl
 
 background = #202231
 foreground = #FFC6FF
