@@ -249,36 +249,13 @@
         "separate-outputs": true
     },
 
-    "pulseaudio": {
-        "scroll-step": 3, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        //"format-source": "{volume}% ",
-        //"format-source-muted": "",
-        "format-source": "",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "on-click-right": "amixer sset Master toggle"
-    },
-
     "wireplumber": {
         "on-click": "pavucontrol",
         "on-click-right": "amixer sset Master toggle 1>/dev/null",
         //on-click: "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
         //on-scroll-down: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04+";
         //on-scroll-up: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04-";
-        "format": "<span foreground='#fab387'>{icon}</span>  {volume}%",
+        "format": "<span foreground='#B5EAD7'>{format_source}</span> | <span foreground='#94E2D5'>{icon}</span>  {volume}% ",
         "format-muted": " ",
         "format-source": "",
         "format-source-muted": "",

@@ -1,3 +1,19 @@
+@define-color primary-fg #FFC6FF;
+@define-color primary-bg rgba(32, 34, 49, 0.8);
+@define-color sec-fg  #FFF0F6;
+@define-color sec-bg #282B3E;
+
+
+@define-color red     #FF8FB1;
+@define-color blue    #89B4FA;
+@define-color green   #A6E3A1;
+@define-color yellow  #FFCE5C;
+@define-color cyan    #94E2D5;
+@define-color purple  #BE75BF;
+@define-color red-bg rgba(255, 143, 177, 0.5);
+@define-color yellow-bg rgba(255, 206, 92, 0.5);
+
+
 * {
   font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif, monospace;
   font-size: 9.5pt;
@@ -7,6 +23,8 @@
   padding: 0;
   transition-property: background-color;
   transition-duration: 0.5s;
+
+  color: @primary-fg;
 }
 
 /* Reset all styles */
@@ -20,7 +38,7 @@
 /* The whole bar */
 #waybar {
   background-color: transparent;
-  color: #ff0055;
+  color: @primary-fg;
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 0px;
@@ -35,22 +53,25 @@ window#waybar.hidden {
   padding: 0px 15px 0px 15px;
   /* Adjusted padding to reduce height */
   margin: 0.0em 0.2em 0.2em 0.2em;
-  color: #ff0055;
-  background-color: rgba(16, 17, 16, 0.7);
+  background-color: @primary-bg;
   transition: all 0.3s ease-in-out;
 }
 
-#workspaces button.active {
-  color: #ffffff;
-  background: #ff0055;
+#workspaces button.active{
+  background-color: @primary-fg;
+}
+
+#workspaces button.active *{
+  color: @primary-bg;
 }
 
 #workspaces button:hover {
-  background: #909090;
+  background: @sec-bg;
+  color: @sec-fg;
 }
 
 #workspaces button.urgent {
-  background-color: #FF0020;
+  background-color: @red;
 }
 
 #workspaces {
@@ -58,17 +79,25 @@ window#waybar.hidden {
 }
 
 #window {
-  background-color: rgba(16, 17, 16, 0.7);
+  background-color: @primary-bg;
   font-size: 15px;
   /* Slightly smaller font size */
   font-weight: 800;
-  color: @foreground;
+color: @foreground;
   padding: 3px 6px;
   /* Reduced padding */
   margin: 2px;
   opacity: 1;
 }
 
+#clock,
+#custom-storage,
+#custom-power,
+#memory,
+#cpu,
+#tray,
+#mpris,
+#cava,
 #power-profiles-daemon,
 #clock,
 #battery,
@@ -91,13 +120,12 @@ window#waybar.hidden {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.default {
-  background-color: rgba(16, 17, 16, 0.7);
+  background-color: @primary-bg;
   padding: 6px;
   /* Adjusted padding */
 }
 
 #cava {
-  background-color: rgba(16, 17, 16, 0.7);
   padding: 0px 6px 0px 6px;
   margin-left: -0.4em;
 }
@@ -122,18 +150,16 @@ window#waybar.hidden {
 
 #mpris {
   margin: -1px 0em 0px 0px;
-  background-color: rgba(16, 17, 16, 0.7);
   padding: 0px 6px 0px 6px;
 }
 
 #power-profiles-daemon {
   padding-left: 15px;
   padding-right: 15px;
-  color: #ffff20;
+  color: @yellow;
 }
 
 #tray {
-  background-color: rgba(16, 17, 16, 0.7);
   padding: 8px;
   /* Adjusted padding */
 }
@@ -148,26 +174,22 @@ window#waybar.hidden {
 }
 
 #cpu {
-  color: #ff0055;
-  background-color: rgba(16, 17, 16, 0.7);
+  color: @red;
   padding: 6px;
 }
 
 #memory {
-  color: #2088ff;
-  background-color: rgba(16, 17, 16, 0.7);
+  color: @blue;
   padding: 6px;
 }
 
 #custom-power {
   font-size: 20px;
-  background-color: rgba(16, 17, 16, 0.7);
   padding: 6px;
 }
 
 #custom-storage {
-  color: #a0ff20;
-  background-color: rgba(16, 17, 16, 0.7);
+  color: @green;
   padding: 6px;
 }
 
@@ -176,7 +198,7 @@ window#waybar.hidden {
 }
 
 #custom-weather.sunnyDay {
-  color: #c2ca76;
+  color: @yellow;
 }
 
 #custom-weather.clearNight {
@@ -212,12 +234,12 @@ window#waybar.hidden {
   margin-right: 0;
 }
 
-#pulseaudio {
-  color: #7d9bba;
+#wireplumber{
+  color: @cyan;
 }
 
 #battery {
-  color: #26a65b;
+  color: @green;
 }
 
 #battery.charging {
@@ -226,35 +248,25 @@ window#waybar.hidden {
 
 @keyframes rainbow-text {
   0% {
-    color: #ff0000;
+    color: #ffadad;
   }
-
-  14% {
-    color: #ff7f00;
+  17% {
+    color: #ffd6a5;
   }
-
-  28% {
-    color: #ffff00;
+  34% {
+    color: #fdffb6;
   }
-
-  42% {
-    color: #00ff00;
+  50% {
+    color: #caffbf;
   }
-
-  57% {
-    color: #0000ff;
+  66% {
+    color: #9bf6ff;
   }
-
-  71% {
-    color: #4b0082;
+  83% {
+    color: #a0c4ff;
   }
-
-  85% {
-    color: #8f00ff;
-  }
-
   100% {
-    color: #ff0000;
+    color: #bdb2ff;
   }
 }
 
@@ -266,7 +278,7 @@ window#waybar.hidden {
 @keyframes blink {
   to {
     background-color: rgba(30, 34, 42, 0.5);
-    color: #abb2bf;
+    color: @red;
   }
 }
 
@@ -283,22 +295,18 @@ label:focus {
   background-color: #000000;
 }
 
-#clock {
-  color: #ff0055;
-}
-
 #network {
-  color: #c080ff;
+  color: @purple;
 }
 
 #network.disconnected {
-  color: #ff0020;
+  color: @red;
 }
 
 #temperature {
-  background-color: rgba(255, 144, 32, 0.5);
+  background-color: @yellow-bg;
 }
 
 #temperature.critical {
-  background-color: rgba(255, 00, 85, 0.5);
+  background-color: @red-bg;
 }
