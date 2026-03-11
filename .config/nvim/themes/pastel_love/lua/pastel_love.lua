@@ -69,10 +69,10 @@ local theme = lush(function(injected_functions)
 		QuickFixLine({ NormalFloat }), -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		Search({ Visual }), -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 		-- SpecialKey     { }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-		SpellBad({ fg = Normal.fg, gui = "underCurl", sp = hsl(342, 100, 78) }), -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-		SpellCap({ fg = Normal.fg, gui = "underCurl", sp = hsl(20, 100, 78) }), -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-		SpellLocal({ fg = Normal.fg, gui = "underCurl", sp = hsl(115, 54, 76) }), -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-		SpellRare({ fg = Normal.fg, gui = "underCurl", sp = hsl(180, 57, 73) }), -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
+		SpellBad({ gui = "underCurl", sp = hsl(342, 100, 78) }), -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		SpellCap({ gui = "underCurl", sp = hsl(20, 100, 78) }), -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+		SpellLocal({ gui = "underCurl", sp = hsl(115, 54, 76) }), -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+		SpellRare({ gui = "underCurl", sp = hsl(180, 57, 73) }), -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 		StatusLine({ bg = Normal.bg.darken(40) }), -- Status line of current window
 		-- StatusLineNC   { }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		-- TabLine        { }, -- Tab pages line, not active tab page label
