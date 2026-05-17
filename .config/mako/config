@@ -1,0 +1,30 @@
+max-visible=10
+layer=top
+font=JetBrainsMono Nerd Font
+background-color=#202231BB
+text-color=#FFC6FF
+border-color=#F5BDE6
+border-radius=7
+max-icon-size=48
+anchor=top-right
+margin=20
+padding=10
+progress-color=#B6CCFECC
+
+[urgency=low]
+border-color=#A6E3A1
+text-color=#C8F7C5
+default-timeout=5000
+
+[urgency=normal]
+border-color=#F5BDE6
+text-color=#FFC6FF
+default-timeout=15000
+
+[urgency=critical]
+border-color=#FF8FB1
+text-color=#FFB3C6
+ignore-timeout=true
+
+[actionable=true]
+on-button-left=exec makoctl menu -n "${id}" -- rofi  -dmenu -p "Select action:"
