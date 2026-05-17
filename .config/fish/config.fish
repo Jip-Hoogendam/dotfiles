@@ -89,6 +89,11 @@ function copy
     end
 end
 
+function multicd
+    set -l length (math (string  length -- $argv ) - 1)
+    echo cd (string repeat -n $length ../)
+end
+
 ## Useful aliases
 # Replace ls with eza
 alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
@@ -105,11 +110,7 @@ alias untar='tar -zxvf '
 alias wget='wget -c '
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
+abbr --add dotdot --regex '^\.\.+$' --function multicd
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
