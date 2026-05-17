@@ -1,0 +1,225 @@
+* {
+  /* Default background color */
+  background-color: #20223100;
+  text-color:       #FFC6FF;
+  font: "JetBrainsMono Bold 10";
+}
+
+
+window {
+  padding: 1em;
+  border-color: #FFC6FF;
+  border:       3px;
+  border-radius: 4px;
+  background-color: #202231AA;
+
+}
+
+mainbox {
+  spacing: 0px;
+  children: [message,inputbar,listview];
+}
+
+message {
+    enabled:                     true;
+    margin:                      0px 10px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               4px;
+    border-color:                inherit;
+    background-color:            inherit;
+    text-color:                  inherit;
+    size:                        inherit;
+}
+
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    placeholder-color:           inherit;
+    blink:                       true;
+    markup:                      true;
+    size:                        300em;
+    font: "JetBrainsMono Bold 15";
+
+}
+error-message {
+    padding:                     12px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                inherit;
+    background-color:            inherit;
+    text-color:                  #FF8FB1;
+}
+
+element {
+  background: transparent;
+  children: [ element-icon, element-text ];
+}
+element,element-text,element-icon, button {
+    cursor: pointer;
+}
+
+inputbar {
+  margin: 0px;
+  spacing: 0.4em;
+  border-color: #FFC6FF;
+  border:        0px;
+  background-color: #20223100;
+  children: [entry,overlay,case-indicator];
+}
+
+
+listview, message {
+  padding: 0.5em;
+  background-color: #20223100;
+
+  columns: 1;
+  lines:   8;
+}
+
+
+listview {
+  border:   0px;
+  spacing: 10px;
+  background-color: #20223100;
+  scrollbar:    false;
+}
+
+
+element {
+    border:  3px;
+    border-radius: 4px;
+    padding: 5px;
+    border-color: #101118;
+}
+
+
+element-text {
+    background-color: #171823;
+    text-color:       #FFC6FF;
+    font: "JetBrains Mono Medium";
+}
+
+element-text normal.normal {
+    text-color:     #FFC6FF;
+}
+element-text.normal.urgent {
+    text-color:     #FF8FB1;
+}
+element-text.normal.active {
+    text-color:     #89B4FA;
+}
+
+
+element normal.normal {
+    border-color:     #101118;
+    background-color: #171823;
+}
+element.normal.urgent {
+    border-color:     #FF8FB1;
+    background-color: #171823;
+}
+element.normal.active {
+    border-color:     #89B4FA;
+    background-color: #171823;
+}
+
+element.alternate.normal {
+    border-color:     #101118;
+    background-color: #171823;
+}
+element.alternate.urgent {
+    border-color:     #FF8FB1;
+    background-color: #171823;
+}
+element.alternate.active {
+    border-color:     #89B4FA;
+    background-color: #171823;
+}
+element-text.alternate.normal {
+    text-color:       #FFC6FF;
+}
+element-text.alternate.urgent {
+    text-color:       #FF8FB1;
+}
+element-text.alternate.active {
+    text-color:       #89B4FA;
+}
+
+
+element.selected.normal {
+    background-color: #312031;
+    border-color: #FFC6FF;
+}
+element.selected.urgent {
+    background-color: #312031;
+    border-color: #FFB3C6;
+}
+element.selected.active {
+    background-color: #312031;
+    border-color: #B6CCFE;
+}
+element-text.selected.normal {
+    background-color: #312031;
+    text-color:       #FFC6FF;
+    font: "JetBrains Mono Bold Medium";
+}
+element-text.selected.urgent {
+    background-color: #312031;
+    text-color:       #FFB3C6;
+    font: "JetBrains Mono Bold Medium";
+}
+element-text.selected.active {
+    background-color: #312031;
+    text-color:       #B6CCFE;
+    font: "JetBrains Mono Bold Medium";
+}
+
+scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-color: #FFC6FF;
+    handle-width: 8px ;
+    padding:      0;
+}
+
+
+mode-switcher {
+    border:  0px;
+    spacing: 10px;
+    expand: true;
+}
+
+
+button {
+    text-color: #FFC6FF;
+    border:       0px 0px 3px ;
+    border-color: #202231;
+    border-radius:    4px 4px 0 0;
+    background-color: #202231;
+    horizontal-align: 0.5;
+}
+
+button selected.normal {
+    text-color: #FFC6FF;
+    margin: 0px;
+    padding: 0px;
+    border:     3px ;
+    border-color: #202231;
+    border-radius:    4px;
+    background-color: #353446;
+}
+
+entry {
+    margin: 0px 0px 0px 10px;
+    placeholder: "";
+    placeholder-color: #836b00;
+    border-color: #FFD6FF;
+    padding: 10px;
+    background-color: #171823AA;
+    border:        3px;
+    border-radius: 4px;
+    text-color: #FFC6FF;
+  }

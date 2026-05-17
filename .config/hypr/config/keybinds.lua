@@ -23,10 +23,10 @@ hl.bind(MainMod .. " + V", hl.dsp.window.float({ action = "toggle" }), { descrip
 hl.bind(MainMod .. " + R", hl.dsp.exec_cmd(Applauncher), { description = "Application launcher" })
 hl.bind(MainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }), { description = "Toggle fullscreen" })
 hl.bind(MainMod .. " + Y", hl.dsp.window.pin(), { description = "Pin window" })
-hl.bind(MainMod .. " + SPACE", hl.dsp.layout("togglesplit"), { description = "Toggle split mode" })
+hl.bind(MainMod .. " + T", hl.dsp.layout("togglesplit"), { description = "Toggle split mode" })
 hl.bind(MainMod .. " + B", hl.dsp.exec_cmd("uwsm app -- " .. WebBrowser), { description = "Open browser" })
 hl.bind(MainMod .. " + D", hl.dsp.exec_cmd("vesktop"), { description = "Open Vesktop" })
-hl.bind(MainMod .. " + SHIFT + P", hl.dsp.exec_cmd("dunstctl close-all"), { description = "Clear notifications" })
+hl.bind(MainMod .. " + SHIFT + D", hl.dsp.exec_cmd("makoctl dismiss -a"), { description = "Clear notifications" })
 hl.bind(MainMod .. " + N", hl.dsp.exec_cmd("uwsm app -- obsidian"), { description = "Open Obsidian" })
 
 -- ============================================================

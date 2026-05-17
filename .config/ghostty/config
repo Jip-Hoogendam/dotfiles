@@ -50,7 +50,7 @@ foreground = #FFC6FF
 cursor-color = #A6E0A3
 cursor-text = #202231
 
-selection-background = #424850
+selection-background = #312031
 selection-foreground = #FFD6FF
 
 palette = 0=#202231
