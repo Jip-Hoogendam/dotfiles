@@ -8,7 +8,7 @@ hl.monitor({
 	output = "",
 	mode = "preferred",
 	position = "auto",
-	scale = 1,
+	scale = 1.07,
 })
 
 hl.config({ xwayland = { force_zero_scaling = true } })

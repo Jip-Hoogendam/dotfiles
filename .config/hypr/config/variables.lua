@@ -45,6 +45,10 @@ hl.config({
 		},
 	},
 
+	cursor = {
+		no_hardware_cursors = 2,
+	},
+
 	-- https://wiki.hyprland.org/0.55.0/Configuring/Variables/#misc
 	misc = {
 		font_family = "Fira Sans",
