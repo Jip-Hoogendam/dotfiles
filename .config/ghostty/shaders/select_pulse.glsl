@@ -1,6 +1,6 @@
 // -- CONFIGURATION --
 const vec4 PULSE_COLOR = vec4(1.0, 0.7, 1.0, 0.7);
-const float DURATION = 0.1;
+const float DURATION = 0.5;
 
 // --- CONSTANTS for easing functions ---
 const float PI = 3.14159265359;
@@ -80,10 +80,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   fragColor = texture(iChannel0, fragCoord.xy / iResolution.xy);
   #endif
 
-  float inv_progress = 1.0 - clamp((iTime - iTimeFocus) / DURATION,
-        0.0, 0.5);
-  float lin_saw = abs(inv_progress * 2 - 1.0);
-  float mix_amout = ease(lin_saw);
+  float inv_progress = clamp((iTime - iTimeFocus) / DURATION,
+      0.0, 1.0);
+  float mix_amout = ease(inv_progress);
   vec4 newColor = mix(PULSE_COLOR, fragColor, mix_amout);
 
   fragColor = newColor;
