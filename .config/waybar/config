@@ -1,279 +1,275 @@
 {
-    // -------------------------------------------------------------------------
-    // Global configuration
-    // -------------------------------------------------------------------------
-
-    "layer": "top",
-    "position": "top",
-    "reload_style_on_change": true,
-
-    //"height": 20,
-
-    "margin-left": 0,
-    "margin-bottom": 0,
-    "margin-right": 0,
-
-    "spacing": 3,
-
-    "modules-left": [
-        "clock#date",
-        "custom/weather",
-        "mpris",
-        "custom/cover-art",
-        "cava",
-    ],
-    "modules-center": [
-        "hyprland/workspaces",
-    ],
-    "modules-right": [
-        "tray",
-        "power-profiles-daemon",
-        "temperature",
-        "custom/storage",
-        "memory",
-        "cpu",
-        "network",
-        "wireplumber",
-        "battery",
-        "custom/power",
-    ],
-
-
-    // -------------------------------------------------------------------------
-    // Modules
-    // ------------------------------------------------------------------------- 
-
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
-    },
-
-    "cava": {
-        "framerate": 24,
-        "autosens": 1,
-        "bars": 14,
-        "lower_cutoff_freq": 50,
-        "higher_cutoff_freq": 20000,
-        "hide_on_silence": true,
-        "sleep_timer": 0,
-        //"format_silent": "quiet",
-        "method": "pipewire",
-        "source": "auto",
-        "stereo": true,
-        "reverse": true,
-        "bar_delimiter": 0,
-        "autoscale": true,
-        "monstercat": true,
-        "waves": false,
-        "noise_reduction": 0.77,
-        "input_delay": 2,
-        "format-icons": ["⠀","⣀", "⣤", "⣤", "⣶", "⣿" ],
-        "actions": {
-          "on-click-right": "mode"
-        }
-    },
-
-    "custom/cover-art": {
-        "exec": "~/.config/waybar/modules/albumcover.sh",
-        "format": " {text}",
-        "tooltip": false,
-        "signal": 1,
-        "return-type": "json",
-      },
-
-    "image#album-art":{
-      "path": "/tmp/cover.gif",
-      "signal": 1,
-      "size": 50,
-    },
-
-    "temperature": {
-        // "thermal-zone": 1,
-        "interval": 4,
-        //"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
-        "critical-threshold": 80,
-        //"format-critical": " {temperatureC}°C",
-        "format-critical": "  {temperatureC}°C",
-        "format": "{icon}  {temperatureC}°C",
-        "format-icons": ["", "", ""],
-        "max-length": 7,
-        "min-length": 7,
-        "on-click": "xsensors"
-    },
-
-    "memory": {
-        "interval": 30,
-        "format": "  {used:0.2f} / {total:0.0f} GB",
-        "on-click": "alacritty -e btop"
-    },
-
-    "battery": {
-        "interval": 2,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-
-    "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format": "",
-        "format-disconnected": "",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
-        "on-click-right": "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)",
-        "tooltip-format": " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n",
-        "tooltip-format-wifi": " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}",
-        "interval": 10
-    },
-
-    "custom/storage": {
-        "format": " {}",
-        "format-alt": "{percentage}% ",
-        "format-alt-click": "click-right",
-        "return-type": "json",
-        "interval": 60,
-        "exec": "~/.config/waybar/modules/storage.sh"
-    },
-
-    "custom/weather": {
-        "format": "{}",
-        "format-alt": "{alt}: {}",
-        "format-alt-click": "click-right",
-        "interval": 3600,
-        "exec": "curl -s 'https://wttr.in/?format=1'",
-        //"return-type": "json",
-        //"exec": "~/.config/waybar/modules/weather.sh",
-        "exec-if": "ping wttr.in -c1"
-    },
-    "custom/pacman": {
-        "format": "<big>􏆲</big>  {}",
-        "interval": 3600,                     // every hour
-        "exec": "checkupdates | wc -l",       // # of updates
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "alacritty -e 'paru'; pkill -SIGRTMIN+8 waybar", // update system
-        "signal": 8,
-        "max-length": 5,
-        "min-length": 3
-    },
-
-
-    "custom/power": {
-        "format": " 󰐥 ",
-        "tooltip": false,
-        "on-click": "wlogout"
-    },
-
-    "clock": {
-        "format": "  {:%H:%M   %e %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "today-format": "<b>{}</b>"
-    },
-
-    "clock#date": {
-        "format": "󰥔  {:%H:%M \n %e %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "today-format": "<b>{}</b>"
-    },
-
-    "cpu": {
-        "interval": 1,
-        //"format": " {}%", // Icon: microchip
-        "format": " {max_frequency}GHz <span color=\"#909090\">| {usage}%</span>",
-        "max-length": 13,
-        "min-length": 13
-    },
-
-    "mpris": {
-	    "format": "{player_icon}    {dynamic}: {position}  {status_icon} ",
-	    "format-paused": "{player_icon}    {dynamic}: <i>{position}</i>  {status_icon} ",
-      "dynamic-separator": " • ",
-      "dynamic-order": ["artist", "title", "album"],
-	    "dynamic-importance-order": ["title", "artist", "album"],
-      "dynamic-len" : 75,
-      "interval": 1,
-      "player-icons": {
-        "default": "▶",
-        "mpv": "🎵",
-        "firefox": "",
-      },
-	    "status-icons": {
-        "playing": "▶",
-        "stopped": "",
-	      "paused": "",
-	    },
-    },
-
-    "hyprland/workspaces": {
-        "all-outputs": true,
-        "format": "{name}",
-        "format-icons": {
-            "1": "一",
-            "2": "二",
-            "3": "三",
-            "4": "四",
-            "5": "五",
-            "6": "六",
-            "7": "七",
-            "8": "八",
-            "9": "九",
-            "10": "十",
-        },
-        "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
-        "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
-        "sort-by-number": true,
-        "active-only": false,
-    },
-
-    "hyprland/window": {
-        "max-length": 100,
-        "format": "{title}",
-        "separate-outputs": true
-    },
-
-    "wireplumber": {
-        "on-click": "pavucontrol",
-        "on-click-right": "amixer sset Master toggle 1>/dev/null",
-        //on-click: "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-        //on-scroll-down: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04+";
-        //on-scroll-up: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04-";
-        "format": "<span foreground='#B5EAD7'>{format_source}</span> | <span foreground='#94E2D5'>{icon}</span>  {volume}% ",
-        "format-muted": " ",
-        "format-source": "",
-        "format-source-muted": "",
-        //"format-muted": "<span foreground='#fab387'> </span>",
-        //"format-icons": [ "<span foreground='#fab387'></span>" ]
-        "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": " ",
-            "portable": " ",
-            "car": " ",
-            "default": [" ", " ", " "]
-        },
-    },
-
-    "tray": {
-        "icon-size": 20,
-        "spacing": 5
+  // -------------------------------------------------------------------------
+  // Global configuration
+  // -------------------------------------------------------------------------
+  "layer": "top",
+  "position": "top",
+  "reload_style_on_change": true,
+  //"height": 20,
+  "margin-left": 0,
+  "margin-bottom": 0,
+  "margin-right": 0,
+  "spacing": 3,
+  "modules-left": [
+    "clock#date",
+    "custom/weather",
+    "mpris",
+    "custom/cover-art",
+    "cava",
+  ],
+  "modules-center": [
+    "hyprland/workspaces",
+  ],
+  "modules-right": [
+    "tray",
+    "power-profiles-daemon",
+    "temperature",
+    "custom/storage",
+    "memory",
+    "cpu",
+    "network",
+    "wireplumber",
+    "battery",
+    "custom/power",
+  ],
+  // -------------------------------------------------------------------------
+  // Modules
+  // ------------------------------------------------------------------------- 
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
     }
+  },
+  "cava": {
+    "framerate": 24,
+    "autosens": 1,
+    "bars": 14,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 20000,
+    "hide_on_silence": true,
+    "sleep_timer": 0,
+    //"format_silent": "quiet",
+    "method": "pipewire",
+    "source": "auto",
+    "stereo": true,
+    "reverse": true,
+    "bar_delimiter": 0,
+    "autoscale": true,
+    "monstercat": true,
+    "waves": false,
+    "noise_reduction": 0.77,
+    "input_delay": 2,
+    "format-icons": [
+      "⠀",
+      "⣀",
+      "⣤",
+      "⣤",
+      "⣶",
+      "⣿"
+    ],
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  "custom/cover-art": {
+    "exec": "~/.config/waybar/modules/albumcover.sh",
+    "format": " {text}",
+    "tooltip": false,
+    "signal": 1,
+    "return-type": "json",
+  },
+  "image#album-art": {
+    "path": "/tmp/cover.gif",
+    "signal": 1,
+    "size": 50,
+  },
+  "temperature": {
+    // "thermal-zone": 1,
+    "interval": 4,
+    //"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    "critical-threshold": 80,
+    //"format-critical": " {temperatureC}°C",
+    "format-critical": "  {temperatureC}°C",
+    "format": "{icon}  {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
+    "max-length": 7,
+    "min-length": 7,
+    "on-click": "xsensors"
+  },
+  "memory": {
+    "interval": 30,
+    "format": "  {used:0.2f} / {total:0.0f} GB",
+    "on-click": "alacritty -e btop"
+  },
+  "battery": {
+    "interval": 2,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format": "",
+    "format-disconnected": "",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
+    "on-click-right": "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)",
+    "tooltip-format": " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n",
+    "tooltip-format-wifi": " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}",
+    "interval": 10
+  },
+  "custom/storage": {
+    "format": " {}",
+    "format-alt": "{percentage}% ",
+    "format-alt-click": "click-right",
+    "return-type": "json",
+    "interval": 60,
+    "exec": "~/.config/waybar/modules/storage.sh"
+  },
+  "custom/weather": {
+    "format": "{}",
+    "format-alt": "{alt}: {}",
+    "format-alt-click": "click-right",
+    "interval": 3600,
+    "exec": "curl -s 'https://wttr.in/?format=1'",
+    //"return-type": "json",
+    //"exec": "~/.config/waybar/modules/weather.sh",
+    "exec-if": "ping wttr.in -c1"
+  },
+  "custom/pacman": {
+    "format": "<big>􏆲</big>  {}",
+    "interval": 3600, // every hour
+    "exec": "checkupdates | wc -l", // # of updates
+    "exec-if": "exit 0", // always run; consider advanced run conditions
+    "on-click": "alacritty -e 'paru'; pkill -SIGRTMIN+8 waybar", // update system
+    "signal": 8,
+    "max-length": 5,
+    "min-length": 3
+  },
+  "custom/power": {
+    "format": " 󰐥 ",
+    "tooltip": false,
+    "on-click": "wlogout"
+  },
+  "clock": {
+    "format": "  {:%H:%M   %e %b}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "today-format": "<b>{}</b>"
+  },
+  "clock#date": {
+    "format": "󰥔  {:%H:%M \n %e %b}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "today-format": "<b>{}</b>"
+  },
+  "cpu": {
+    "interval": 1,
+    //"format": " {}%", // Icon: microchip
+    "format": " {max_frequency}GHz <span color=\"#909090\">| {usage}%</span>",
+    "max-length": 13,
+    "min-length": 13
+  },
+  "mpris": {
+    "format": "{player_icon}    {dynamic}: {position}  {status_icon} ",
+    "format-paused": "{player_icon}    {dynamic}: <i>{position}</i>  {status_icon} ",
+    "dynamic-separator": " • ",
+    "dynamic-order": [
+      "artist",
+      "title",
+      "album"
+    ],
+    "dynamic-importance-order": [
+      "title",
+      "artist",
+      "album"
+    ],
+    "dynamic-len": 75,
+    "interval": 1,
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵",
+      "firefox": ""
+    },
+    "status-icons": {
+      "playing": "▶",
+      "stopped": "",
+      "paused": ""
+    }
+  },
+  "hyprland/workspaces": {
+    "all-outputs": true,
+    "format": "{name}",
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十"
+    },
+    "on-scroll-up": "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e+1', on_current_monitor = true })\">/dev/null",
+    "on-scroll-down": "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e-1', on_current_monitor = true })\">/dev/null",
+    "sort-by-number": true,
+    "active-only": false
+  },
+  "hyprland/window": {
+    "max-length": 100,
+    "format": "{title}",
+    "separate-outputs": true
+  },
+  "wireplumber": {
+    "on-click": "pavucontrol",
+    "on-click-right": "amixer sset Master toggle 1>/dev/null",
+    //on-click: "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+    //on-scroll-down: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04+";
+    //on-scroll-up: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04-";
+    "format": "<span foreground='#B5EAD7'>{format_source}</span> | <span foreground='#94E2D5'>{icon}</span>  {volume}% ",
+    "format-muted": " ",
+    "format-source": "",
+    "format-source-muted": "",
+    //"format-muted": "<span foreground='#fab387'> </span>",
+    //"format-icons": [ "<span foreground='#fab387'></span>" ]
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": [
+        " ",
+        " ",
+        " "
+      ]
+    },
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 5
+  }
 }
