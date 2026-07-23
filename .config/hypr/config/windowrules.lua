@@ -191,6 +191,20 @@ hl.window_rule({
 	no_blur = true,
 })
 
+hl.window_rule({
+	match = { title = "KDE Connect Daemon" },
+	opacity = 1,
+	no_blur = true,
+	no_shadow = true,
+	no_anim = true,
+	float = true,
+	no_focus = true,
+	pin = true,
+	move = { 0, 0 },
+	size = { "monitor_w", "monitor_h" },
+	suppress_event = "fullscreen",
+})
+
 ----------------------------------------------------------------
 -- Decorations: Floating windows on workspaces 1-10
 ----------------------------------------------------------------
